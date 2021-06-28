@@ -1,0 +1,24 @@
+.global absolute
+.global _b
+.extern a_
+.extern _Abc09
+.equ absolute, 9
+
+.section text
+jmp %absolute
+_b: ldr r2, [r4 + a_]
+
+#trebalo bi da ostane bez relok. zapisa
+call %a_
+
+not r5
+
+lokalni:test r4, r6
+
+str r2, $_Abc09
+
+.section data
+
+jgt lokalni
+
+.end
